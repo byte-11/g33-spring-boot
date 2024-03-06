@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Article</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        tr, td, th {
+            border: 1px solid black;
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<form action="/articles" method="POST">
+    <label>
+        Title: <input type="text" name="title">
+    </label>
+    <br>
+    <br>
+    <label>
+        Content: <textarea name="content"></textarea>
+    </label>
+    <br>
+    <br>
+    <label>
+        Author: <input type="text" name="author">
+    </label>
+    <br>
+    <br>
+    <button type="submit">Publish</button>
+</form>
+<br>
+<br>
+<table>
+    <tr>
+        <th>#</th>
+        <th>ID</th>
+        <th>TITLE</th>
+        <th>AUTHOR</th>
+    </tr>
+    <tr th:each="article, stat: ${articles}">
+        <td th:text="${stat.count}"></td>
+        <td th:text="${article.id}"></td>
+        <td th:text="${article.title}"></td>
+        <td th:text="${article.author}"></td>
+    </tr>
+</table>
+</body>
+</html>
